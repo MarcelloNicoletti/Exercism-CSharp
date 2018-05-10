@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -10,6 +11,11 @@ public class NucleotideCount
 
     public NucleotideCount(string sequence)
     {
+        if (sequence.Any(x => !ValidNucleotides.Contains(x)))
+        {
+            throw new InvalidNucleotideException();
+        }
+
         var nucleotideCounts = countNucleotides(sequence);
         _nucleotideCounts = new ReadOnlyDictionary<char, int>(nucleotideCounts);
     }
@@ -26,11 +32,6 @@ public class NucleotideCount
 
         foreach (var nucleotide in sequence)
         {
-            if (!ValidNucleotides.Contains(nucleotide))
-            {
-                throw new InvalidNucleotideException();
-            }
-
             nucleotideCounts[nucleotide] += 1;
         }
 
