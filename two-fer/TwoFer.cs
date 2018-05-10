@@ -2,8 +2,13 @@
 
   public static class TwoFer
   {
-      public static string Name(string input = null)
+      public static string Name()
       {
-          throw new NotImplementedException("You need to implement this function.");
+          return Name("you");
+      }
+
+      public static string Name(string input)
+      {
+          return $"One for {input}, one for me.";
       }
   }
