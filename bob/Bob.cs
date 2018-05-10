@@ -2,24 +2,34 @@ using System;
 
 public static class Bob
 {
+    private const string DefaultResponse = "Whatever.";
+    private const string EmptyResponse = "Fine. Be that way!";
+    private const string ShoutResponse = "Whoa, chill out!";
+    private const string AskRespose = "Sure.";
+    private const string ShoutedAskResponce = "Calm down, I know what I'm doing!";
+    
     public static string Response(string statement)
     {
-        if (string.IsNullOrEmpty(statement.Trim())) {
-            return "Fine. Be that way!";
+        var response = DefaultResponse;
+        var trimmedStatement = statement.Trim();
+
+        if (string.IsNullOrEmpty(trimmedStatement)) {
+            response = EmptyResponse;
         }
-        if (IsShouting(statement.Trim()))
+        else if (IsShouting(trimmedStatement) && IsAsking(trimmedStatement))
         {
-            if (IsAsking(statement.Trim()))
-            {
-                return "Calm down, I know what I'm doing!";
-            }
-            return "Whoa, chill out!";
+            response = ShoutedAskResponce;
         }
-        if (IsAsking(statement.Trim()))
+        else if (IsShouting(trimmedStatement))
         {
-            return "Sure.";
+            response = ShoutResponse;
         }
-        return "Whatever.";
+        else if (IsAsking(trimmedStatement))
+        {
+            response = AskRespose;
+        }
+
+        return response;
     }
 
     private static bool IsShouting(string statement)
@@ -40,6 +50,6 @@ public static class Bob
 
     private static bool IsAsking(string statement)
     {
-        return statement[statement.Length - 1] == '?';
+        return statement.EndsWith('?');
     }
 }
