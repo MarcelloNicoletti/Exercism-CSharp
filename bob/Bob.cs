@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+
 
 public static class Bob
 {
@@ -7,7 +9,7 @@ public static class Bob
     private const string ShoutResponse = "Whoa, chill out!";
     private const string AskRespose = "Sure.";
     private const string ShoutedAskResponce = "Calm down, I know what I'm doing!";
-    
+
     public static string Response(string statement)
     {
         var response = DefaultResponse;
@@ -34,18 +36,7 @@ public static class Bob
 
     private static bool IsShouting(string statement)
     {
-        var hasLetters = false;
-        for (int i = 0; i < statement.Length; i++)
-        {
-            if (Char.IsLetter(statement[i]))
-            {
-                hasLetters = true;
-                if (!Char.IsUpper(statement[i])) {
-                    return false;
-                }
-            }
-        }
-        return hasLetters;
+        return statement.Any(char.IsLetter) && !statement.Any(char.IsLower);
     }
 
     private static bool IsAsking(string statement)
