@@ -2,12 +2,7 @@
 
   public static class TwoFer
   {
-      public static string Name()
-      {
-          return Name("you");
-      }
-
-      public static string Name(string input)
+      public static string Name(string input = "you")
       {
           return $"One for {input}, one for me.";
       }
