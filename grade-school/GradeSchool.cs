@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class School
 {
-    private readonly IDictionary<int, ISet<string>> _roster = new SortedDictionary<int, ISet<string>>();
+    private readonly IDictionary<int, ICollection<string>> _roster = new Dictionary<int, ICollection<string>>();
 
     public void Add(string student, int grade)
     {
         if (!_roster.ContainsKey(grade))
         {
-            _roster.Add(grade, new SortedSet<string>());
+            _roster.Add(grade, new List<string>());
         }
 
         _roster[grade].Add(student);
@@ -18,9 +18,9 @@ public class School
 
     public IEnumerable<string> Roster()
     {
-        foreach (var grade in _roster.Keys)
+        foreach (var grade in _roster.Keys.OrderBy(x => x))
         {
-            foreach (var student in _roster[grade])
+            foreach (var student in _roster[grade].OrderBy(x => x))
             {
                 yield return student;
             }
@@ -34,6 +34,6 @@ public class School
             return Enumerable.Empty<string>();
         }
 
-        return _roster[grade];
+        return _roster[grade].OrderBy(x => x);
     }
 }
