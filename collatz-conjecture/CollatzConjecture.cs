@@ -9,11 +9,16 @@ public static class CollatzConjecture
             throw new ArgumentException();
         }
 
+        return Helper(number, 0);
+    }
+
+    private static int Helper(int number, int steps)
+    {
         if (number == 1)
         {
-            return 0;
+            return steps;
         }
 
-        return ((number % 2 == 0) ? Steps(number / 2) : Steps(number * 3 + 1)) + 1;
+        return (number % 2 == 0) ? Helper(number / 2, steps + 1) : Helper(number * 3 + 1, steps + 1);
     }
 }
