@@ -5,19 +5,15 @@ public static class RealNumberExtension
 {
     public static double Expreal(this int realNumber, RationalNumber r)
     {
-        var rationalNumber = (double)r.Numerator / (double)r.Denominator;
-        return Math.Pow(realNumber, rationalNumber);
+        return r.Expreal(realNumber);
     }
 }
 
+[DebuggerDisplay("{Numerator} / {Denominator}")]
 public struct RationalNumber
 {
-
-    private readonly int _numerator;
-    private readonly int _denominator;
-
-    public int Numerator { get { return _numerator; } }
-    public int Denominator { get { return _denominator; } }
+    public int Numerator { get; }
+    public int Denominator { get; }
 
     public RationalNumber(int numerator, int denominator)
     {
@@ -27,8 +23,8 @@ public struct RationalNumber
         }
 
         var gcd = Gcd(numerator, denominator);
-        this._numerator = numerator / gcd;
-        this._denominator = denominator / gcd;
+        this.Numerator = numerator / gcd;
+        this.Denominator = denominator / gcd;
     }
 
     public RationalNumber Add(RationalNumber r)
@@ -45,7 +41,6 @@ public struct RationalNumber
 
     public RationalNumber Sub(RationalNumber r)
     {
-        // r1 - r2 = a1/b1 - a2/b2 = (a1 * b2 - a2 * b1) / (b1 * b2)
         var numerator = (this.Numerator * r.Denominator) - (r.Numerator * this.Denominator);
         var denominator = this.Denominator * r.Denominator;
         return new RationalNumber(numerator, denominator);
@@ -103,7 +98,8 @@ public struct RationalNumber
 
     public double Expreal(int baseNumber)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        var rationalNumber = (double)this.Numerator / (double)this.Denominator;
+        return Math.Pow(baseNumber, rationalNumber);
     }
 
     public override string ToString()
@@ -113,16 +109,17 @@ public struct RationalNumber
 
     private static int Gcd(int a, int b)
     {
+        // Tail recursive euclidian gcd
         return b == 0 ? a : Gcd(b, a % b);
     }
 
-    public static int IntPow(int baseValue, int power)
+    private static int IntPow(int value, int power, int accumulator = 1)
     {
-        var exponent = 1;
-        for (var i = 0; i < power; i++)
-        {
-            exponent *= baseValue;
-        }
-        return exponent;
+        // Tail recursive exponentiation by squaring
+        return (power == 0)
+                ? accumulator
+                : (power % 2 == 0)
+                    ? IntPow(value * value, power / 2, accumulator)
+                    : IntPow(value * value, (power - 1) / 2, value * accumulator);
     }
 }
