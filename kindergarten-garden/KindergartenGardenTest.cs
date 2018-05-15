@@ -12,6 +12,13 @@ public class KindergartenGardenTest
     }
 
     [Fact]
+    public void Partial_garden_garden_with_single_student_with_extra_row()
+    {
+        var sut = new KindergartenGarden("RC\nGG\nVV\nRC\nGG\nVV");
+        Assert.Equal(new[] { Plant.Radishes, Plant.Clover, Plant.Grass, Plant.Grass, Plant.Violets, Plant.Violets,Plant.Radishes, Plant.Clover, Plant.Grass, Plant.Grass, Plant.Violets, Plant.Violets }, sut.Plants("Alice"));
+    }
+
+    [Fact]
     public void Partial_garden_different_garden_with_single_student()
     {
         var sut = new KindergartenGarden("VC\nRC");

@@ -51,8 +51,13 @@ public class KindergartenGarden
     private static Dictionary<string, List<Plant>> ParseDiagram(string diagram, IEnumerable<string> students)
     {
         var plantsForStudent = new Dictionary<string, List<Plant>>();
+        var diagramRowStrings = diagram.Split("\n");
+        if (diagramRowStrings.Any(x => x.Length != diagramRowStrings[0].Length))
+        {
+            throw new ArgumentException($"{diagram} is not a valid diagram.");
+        }
 
-        var diagramPlants = diagram.Split("\n").Select(rowString => rowString.Select(ParsePlantChar));
+        var diagramPlants = diagramRowStrings.Select(rowString => rowString.Select(ParsePlantChar));
         var studentsCache = students.ToImmutableList();
 
         foreach (var row in diagramPlants)
@@ -106,15 +111,27 @@ public static class StackOverflowLinqExtensions
         var count = 0;
         foreach (var item in source)
         {
-            if (array == null) array = new T[size];
+            if (array == null)
+            {
+                array = new T[size];
+            }
+
             array[count++] = item;
-            if (count != size) continue;
+            if (count != size)
+            {
+                continue;
+            }
+
             yield return new ReadOnlyCollection<T>(array);
             array = null;
             count = 0;
         }
 
-        if (array == null) yield break;
+        if (array == null)
+        {
+            yield break;
+        }
+
         Array.Resize(ref array, count);
         yield return new ReadOnlyCollection<T>(array);
     }
