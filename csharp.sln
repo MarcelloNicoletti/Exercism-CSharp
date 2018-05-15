@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accumulate", "accumulate\Accumulate.csproj", "{9A347D46-6FB5-408E-9FBC-68CC64F1CFBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmstrongNumbers", "armstrong-numbers\ArmstrongNumbers.csproj", "{AB776972-5235-4202-B755-92FB4E0DBE51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bob", "bob\Bob.csproj", "{1C270730-5472-45D2-BFDF-2D7E94CE0306}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollatzConjecture", "collatz-conjecture\CollatzConjecture.csproj", "{EBDF07C2-4882-44D1-A576-1CAD0D4B8AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeSchool", "grade-school\GradeSchool.csproj", "{446F1FB8-CABA-425B-B206-7AB85728934D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "hello-world\HelloWorld.csproj", "{1E2618EB-3FE8-4BFD-91DD-F1229647984A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KindergartenGarden", "kindergarten-garden\KindergartenGarden.csproj", "{A046F885-57A1-43BE-BDF6-A6EE5C005E62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap", "leap\Leap.csproj", "{6998C20D-AE9D-4206-8B00-2C2EC480F7C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NucleotideCount", "nucleotide-count\NucleotideCount.csproj", "{09A6ECCA-CC23-4FC1-BB7E-307E63E253DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raindrops", "raindrops\Raindrops.csproj", "{567A989E-E792-43FD-BC63-5B1105E6FD31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RationalNumbers", "rational-numbers\RationalNumbers.csproj", "{471FFA36-C55A-4863-84EE-9DC57FF15AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseString", "reverse-string\ReverseString.csproj", "{9808D462-9638-4A35-825B-DEBAA29DA658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumOfMultiples", "sum-of-multiples\SumOfMultiples.csproj", "{B798A20F-058C-4CD1-9E06-57FE21FC78A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoFer", "two-fer\TwoFer.csproj", "{55EC5E7B-D1B8-4F15-AC73-5DD2A9B441C0}"
+EndProject
+Global
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A347D46-6FB5-408E-9FBC-68CC64F1CFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A347D46-6FB5-408E-9FBC-68CC64F1CFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB776972-5235-4202-B755-92FB4E0DBE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB776972-5235-4202-B755-92FB4E0DBE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C270730-5472-45D2-BFDF-2D7E94CE0306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C270730-5472-45D2-BFDF-2D7E94CE0306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBDF07C2-4882-44D1-A576-1CAD0D4B8AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDF07C2-4882-44D1-A576-1CAD0D4B8AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446F1FB8-CABA-425B-B206-7AB85728934D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446F1FB8-CABA-425B-B206-7AB85728934D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2618EB-3FE8-4BFD-91DD-F1229647984A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2618EB-3FE8-4BFD-91DD-F1229647984A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A046F885-57A1-43BE-BDF6-A6EE5C005E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A046F885-57A1-43BE-BDF6-A6EE5C005E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6998C20D-AE9D-4206-8B00-2C2EC480F7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6998C20D-AE9D-4206-8B00-2C2EC480F7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A6ECCA-CC23-4FC1-BB7E-307E63E253DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A6ECCA-CC23-4FC1-BB7E-307E63E253DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567A989E-E792-43FD-BC63-5B1105E6FD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567A989E-E792-43FD-BC63-5B1105E6FD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471FFA36-C55A-4863-84EE-9DC57FF15AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471FFA36-C55A-4863-84EE-9DC57FF15AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9808D462-9638-4A35-825B-DEBAA29DA658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9808D462-9638-4A35-825B-DEBAA29DA658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B798A20F-058C-4CD1-9E06-57FE21FC78A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B798A20F-058C-4CD1-9E06-57FE21FC78A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55EC5E7B-D1B8-4F15-AC73-5DD2A9B441C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55EC5E7B-D1B8-4F15-AC73-5DD2A9B441C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
