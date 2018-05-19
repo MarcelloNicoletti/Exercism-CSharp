@@ -1,40 +1,35 @@
-using System;
-
 public struct Clock
 {
+    private readonly int _minutes;
+    
     public Clock(int hours, int minutes)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        _minutes = FloorDivMod((hours * 60) + minutes, 24 * 60);
     }
 
-    public int Hours
-    {
-        get
-        {
-            throw new NotImplementedException("You need to implement this function.");
-        }
-    }
+    public int Hours => _minutes / 60;
 
-    public int Minutes
-    {
-        get
-        {
-            throw new NotImplementedException("You need to implement this function.");
-        }
-    }
+    public int Minutes => _minutes % 60;
 
     public Clock Add(int minutesToAdd)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return new Clock(Hours, Minutes + minutesToAdd);
     }
 
     public Clock Subtract(int minutesToSubtract)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return Add(-minutesToSubtract);
     }
 
     public override string ToString()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return $"{Hours:D2}:{Minutes:D2}";
+    }
+
+    private static int FloorDivMod(int a, int n)
+    {
+        // Floor division modulo handles negative dividends properly for a clock situation.
+        var r = a % n;
+        return r < 0 ? r + n : r;
     }
 }
