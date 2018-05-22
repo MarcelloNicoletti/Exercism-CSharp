@@ -12,35 +12,27 @@ public class BinarySearch
 
     public int Find (int value)
     {
-        if (_values.Length == 0)
+        var left = 0;
+        var right = _values.Length - 1;
+        while (left <= right)
         {
-            return -1;
-        }
+            var middle = (left + right) / 2;
 
-        var start = 0;
-        var end = _values.Length - 1;
-        while (true)
-        {
-            var middle = (start + end) / 2;
-            var guess = _values[middle];
-            if (start == middle || end == middle)
-            {
-                return guess == value ? middle : -1;
-            }
-
-            if (guess == value)
+            if (_values[middle] == value)
             {
                 return middle;
             }
 
-            if (value < guess)
+            if (value < _values[middle])
             {
-                end = middle - 1;
+                right = middle - 1;
             }
             else
             {
-                start = middle + 1;
+                left = middle + 1;
             }
         }
+
+        return -1;
     }
 }
