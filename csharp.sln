@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock", "clock\Clock.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearch", "binary-search\BinarySearch.csproj", "{655DB4FE-113C-492C-8A6A-799D070A97B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allergies", "allergies\Allergies.csproj", "{4E98B219-16F8-437D-9B92-C1F6CE0105C9}"
+EndProject
 Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9A347D46-6FB5-408E-9FBC-68CC64F1CFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -68,6 +70,8 @@ Global
 		{96C4ECA0-ECE3-46CC-B38F-B27C86E651CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{655DB4FE-113C-492C-8A6A-799D070A97B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{655DB4FE-113C-492C-8A6A-799D070A97B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E98B219-16F8-437D-9B92-C1F6CE0105C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E98B219-16F8-437D-9B92-C1F6CE0105C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
