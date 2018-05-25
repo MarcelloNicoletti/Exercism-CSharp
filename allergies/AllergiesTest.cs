@@ -13,14 +13,14 @@ public class AllergiesTest
         Assert.False(sut.IsAllergicTo("strawberries"));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Is_allergic_to_eggs()
     {
         var sut = new Allergies(1);
         Assert.True(sut.IsAllergicTo("eggs"));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_eggs_in_addition_to_other_stuff()
     {
         var sut = new Allergies(5);
@@ -29,14 +29,14 @@ public class AllergiesTest
         Assert.False(sut.IsAllergicTo("strawberries"));
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void No_allergies_at_all()
     {
         var sut = new Allergies(0);
         Assert.Empty(sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_just_eggs()
     {
         var sut = new Allergies(1);
@@ -44,7 +44,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_just_peanuts()
     {
         var sut = new Allergies(2);
@@ -52,7 +52,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_just_strawberries()
     {
         var sut = new Allergies(8);
@@ -60,7 +60,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_eggs_and_peanuts()
     {
         var sut = new Allergies(3);
@@ -68,7 +68,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_more_than_eggs_but_not_peanuts()
     {
         var sut = new Allergies(5);
@@ -76,7 +76,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_lots_of_stuff()
     {
         var sut = new Allergies(248);
@@ -84,7 +84,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Allergic_to_everything()
     {
         var sut = new Allergies(255);
@@ -92,7 +92,7 @@ public class AllergiesTest
         Assert.Equal(expected, sut.List());
     }
 
-    [Fact(Skip = "Remove to run test")]
+    [Fact]
     public void Ignore_non_allergen_score_parts()
     {
         var sut = new Allergies(509);
