@@ -4,26 +4,26 @@ using System.Linq;
 
 public class Allergies
 {
-    private readonly AllergyEnum _flags;
+    private readonly Allergens _allergenFlags;
 
     public Allergies (int mask)
     {
-        _flags = (AllergyEnum)mask;
+        _allergenFlags = (Allergens)mask;
     }
 
     public bool IsAllergicTo (string allergy)
     {
-        return _flags.Has(allergy);
+        return _allergenFlags.HasFlagFromString(allergy);
     }
 
     public IList<string> List ()
     {
-        return _flags.GetAllergyList();
+        return _allergenFlags.GetAllergyList();
     }
 }
 
 [Flags]
-public enum AllergyEnum
+public enum Allergens
 {
     Eggs = 1 << 0,
     Peanuts = 1 << 1,
@@ -35,24 +35,23 @@ public enum AllergyEnum
     Cats = 1 << 7
 }
 
-public static class AllergyEnumExtensions
+public static class AllergensExtensions
 {
-    private static readonly IDictionary<AllergyEnum, string> AllergyEnumToString = new Dictionary<AllergyEnum, string>
+    private static readonly IDictionary<Allergens, string> AllergyEnumToString = new Dictionary<Allergens, string>
     {
-        {AllergyEnum.Eggs, "eggs"},
-        {AllergyEnum.Peanuts, "peanuts"},
-        {AllergyEnum.Shellfish, "shellfish"},
-        {AllergyEnum.Strawberries, "strawberries"},
-        {AllergyEnum.Tomatoes, "tomatoes"},
-        {AllergyEnum.Chocolate, "chocolate"},
-        {AllergyEnum.Pollen, "pollen"},
-        {AllergyEnum.Cats, "cats"}
+        {Allergens.Eggs, "eggs"},
+        {Allergens.Peanuts, "peanuts"},
+        {Allergens.Shellfish, "shellfish"},
+        {Allergens.Strawberries, "strawberries"},
+        {Allergens.Tomatoes, "tomatoes"},
+        {Allergens.Chocolate, "chocolate"},
+        {Allergens.Pollen, "pollen"},
+        {Allergens.Cats, "cats"}
     };
-
-    private static readonly IDictionary<string, AllergyEnum> AllergyStringToEnum =
+    private static readonly IDictionary<string, Allergens> AllergyStringToEnum =
         AllergyEnumToString.ToDictionary(entry => entry.Value, entry => entry.Key);
 
-    public static bool Has (this AllergyEnum flags, string allergy)
+    public static bool HasFlagFromString (this Allergens flags, string allergy)
     {
         if (!AllergyStringToEnum.ContainsKey(allergy))
         {
@@ -63,18 +62,18 @@ public static class AllergyEnumExtensions
         return flags.HasFlag(flag);
     }
 
-    public static IList<string> GetAllergyList (this AllergyEnum flags)
+    public static IList<string> GetAllergyList (this Allergens flags)
     {
         var allergies = new List<string>();
 
-        foreach (AllergyEnum allergy in Enum.GetValues(typeof(AllergyEnum)))
+        foreach (Allergens allergen in Enum.GetValues(typeof(Allergens)))
         {
-            if (flags.HasFlag(allergy))
+            if (flags.HasFlag(allergen))
             {
-                allergies.Add(AllergyEnumToString[allergy]);
+                allergies.Add(AllergyEnumToString[allergen]);
             }
         }
 
-        return allergies;
+        return allergies.AsReadOnly();
     }
 }
