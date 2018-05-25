@@ -18,7 +18,7 @@ public class Allergies
 
     public IList<string> List ()
     {
-        return _allergenFlags.GetAllergyList();
+        return _allergenFlags.GetAllergyStrings().ToList().AsReadOnly();
     }
 }
 
@@ -48,6 +48,7 @@ public static class AllergensExtensions
         {Allergens.Pollen, "pollen"},
         {Allergens.Cats, "cats"}
     };
+
     private static readonly IDictionary<string, Allergens> AllergyStringToEnum =
         AllergyEnumToString.ToDictionary(entry => entry.Value, entry => entry.Key);
 
@@ -62,18 +63,14 @@ public static class AllergensExtensions
         return flags.HasFlag(flag);
     }
 
-    public static IList<string> GetAllergyList (this Allergens flags)
+    public static IEnumerable<string> GetAllergyStrings (this Allergens flags)
     {
-        var allergies = new List<string>();
-
         foreach (Allergens allergen in Enum.GetValues(typeof(Allergens)))
         {
             if (flags.HasFlag(allergen))
             {
-                allergies.Add(AllergyEnumToString[allergen]);
+                yield return AllergyEnumToString[allergen];
             }
         }
-
-        return allergies.AsReadOnly();
     }
 }
