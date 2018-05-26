@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class SaddlePoints
 {
@@ -13,14 +12,42 @@ public class SaddlePoints
 
     public IEnumerable<Tuple<int, int>> Calculate ()
     {
-        var maxForRow = Memoizer.Memoize((int x) => _matrix.GetRow(x).Max());
-        var minForColumn = Memoizer.Memoize((int y) => _matrix.GetColumn(y).Min());
+        var rowMaxes = new int[_matrix.NumRows];
+        var colMins = new int[_matrix.NumCols];
 
         for (var row = 0; row < _matrix.NumRows; row++)
         {
             for (var col = 0; col < _matrix.NumCols; col++)
             {
-                if (maxForRow(row) == _matrix[row, col] && minForColumn(col) == _matrix[row, col])
+                var cellVal = _matrix[row, col];
+                if (col == 0)
+                {
+                    rowMaxes[row] = cellVal;
+                }
+
+                if (row == 0)
+                {
+                    colMins[col] = cellVal;
+                }
+
+                if (cellVal > rowMaxes[row])
+                {
+                    rowMaxes[row] = cellVal;
+                }
+
+                if (cellVal < colMins[col])
+                {
+                    colMins[col] = cellVal;
+                }
+            }
+        }
+
+        for (var row = 0; row < _matrix.NumRows; row++)
+        {
+            for (var col = 0; col < _matrix.NumCols; col++)
+            {
+                var cellVal = _matrix[row, col];
+                if (rowMaxes[row] == cellVal && colMins[col] == cellVal)
                 {
                     yield return (row, col).ToTuple();
                 }
@@ -41,36 +68,4 @@ internal class Matrix<T>
     public int NumRows => _matrix.GetLength(0);
     public int NumCols => _matrix.GetLength(1);
     public T this [int row, int col] => _matrix[row, col];
-
-    public IEnumerable<T> GetRow (int row)
-    {
-        return Enumerable.Range(0, NumCols).Select(col => this[row, col]);
-    }
-
-    public IEnumerable<T> GetColumn (int col)
-    {
-        return Enumerable.Range(0, NumRows).Select(row => this[row, col]);
-    }
-}
-
-internal static class Memoizer
-{
-    public static Func<T, TResult> Memoize<T, TResult> (Func<T, TResult> func)
-    {
-        var map = new Dictionary<T, TResult>();
-        return x =>
-        {
-            if (!map.ContainsKey(x))
-            {
-                map[x] = func(x);
-            }
-
-            return map[x];
-        };
-    }
-
-    public static Func<T, TResult> AsMemoized<T, TResult> (this Func<T, TResult> func)
-    {
-        return Memoize(func);
-    }
 }
