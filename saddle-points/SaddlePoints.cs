@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 public class SaddlePoints
 {
@@ -14,43 +16,45 @@ public class SaddlePoints
     {
         var rowMaxes = new int[_matrix.NumRows];
         var colMins = new int[_matrix.NumCols];
+        var candidateSaddlePoints = new List<(int, int)>();
+
+        bool IsSaddlePoint (int row, int col, int val) => rowMaxes[row] == val && colMins[col] == val;
 
         for (var row = 0; row < _matrix.NumRows; row++)
         {
             for (var col = 0; col < _matrix.NumCols; col++)
             {
-                var cellVal = _matrix[row, col];
+                var val = _matrix[row, col];
                 if (col == 0)
                 {
-                    rowMaxes[row] = cellVal;
+                    rowMaxes[row] = val;
+                }
+                else if (val > rowMaxes[row])
+                {
+                    rowMaxes[row] = val;
                 }
 
                 if (row == 0)
                 {
-                    colMins[col] = cellVal;
+                    colMins[col] = val;
+                }
+                else if (val < colMins[col])
+                {
+                    colMins[col] = val;
                 }
 
-                if (cellVal > rowMaxes[row])
+                if (IsSaddlePoint(row, col, val))
                 {
-                    rowMaxes[row] = cellVal;
-                }
-
-                if (cellVal < colMins[col])
-                {
-                    colMins[col] = cellVal;
+                    candidateSaddlePoints.Add((row, col));
                 }
             }
         }
-
-        for (var row = 0; row < _matrix.NumRows; row++)
+        
+        foreach (var (row, col) in candidateSaddlePoints)
         {
-            for (var col = 0; col < _matrix.NumCols; col++)
+            if (IsSaddlePoint(row, col, _matrix[row, col]))
             {
-                var cellVal = _matrix[row, col];
-                if (rowMaxes[row] == cellVal && colMins[col] == cellVal)
-                {
-                    yield return (row, col).ToTuple();
-                }
+                yield return (row, col).ToTuple();
             }
         }
     }
