@@ -27,19 +27,7 @@ public static class Markdown
 
     private static string ParseHeader(string markdown, bool list, out bool inListAfter)
     {
-        var count = 0;
-
-        for (int i = 0; i < markdown.Length; i++)
-        {
-            if (markdown[i] == '#')
-            {
-                count += 1;
-            }
-            else
-            {
-                break;
-            }
-        }
+        var count = CountHashes(markdown);
 
         if (count == 0)
         {
@@ -60,6 +48,25 @@ public static class Markdown
             inListAfter = false;
             return headerHtml;
         }
+    }
+
+    private static int CountHashes (string markdown)
+    {
+        var count = 0;
+
+        foreach (var character in markdown)
+        {
+            if (character == '#')
+            {
+                count += 1;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return count;
     }
 
     private static string ParseLineItem(string markdown, bool list, out bool inListAfter)
