@@ -18,18 +18,11 @@ public static class Markdown
 
     private static string ParseItalic(string markdown) => ParseDelimited(markdown, "_", "em");
 
-    private static string ParseText(string markdown, bool list)
+    private static string ParseText(string markdown, bool isList)
     {
-        var parsedText = Parse_(Parse__((markdown)));
+        var parsedText = ParseItalic(ParseBold(markdown));
 
-        if (list)
-        {
-            return parsedText;
-        }
-        else
-        {
-            return Wrap(parsedText, "p");
-        }
+        return isList ? parsedText : Wrap(parsedText, "p");
     }
 
     private static string ParseHeader(string markdown, bool list, out bool inListAfter)
