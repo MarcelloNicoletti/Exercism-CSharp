@@ -3,14 +3,14 @@ using System.Text.RegularExpressions;
 
 public static class Markdown
 {
-    private static string Wrap(string text, string tag) => "<" + tag + ">" + text + "</" + tag + ">";
+    private static string Wrap(string text, string tag) => $"<{tag}>{text}</{tag}>";
 
-    private static bool IsTag(string text, string tag) => text.StartsWith("<" + tag + ">");
+    private static bool IsTag(string text, string tag) => text.StartsWith($"<{tag}>");
 
     private static string Parse(string markdown, string delimiter, string tag)
     {
-        var pattern = delimiter + "(.+)" + delimiter;
-        var replacement = "<" + tag + ">$1</" + tag + ">";
+        var pattern = $"{delimiter}(.+?){delimiter}";
+        var replacement = $"<{tag}>$1</{tag}>";
         return Regex.Replace(markdown, pattern, replacement);
     }
 
