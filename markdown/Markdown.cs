@@ -7,16 +7,16 @@ public static class Markdown
 
     private static bool IsTag(string text, string tag) => text.StartsWith($"<{tag}>");
 
-    private static string Parse(string markdown, string delimiter, string tag)
+    private static string ParseDelimited(string markdown, string delimiter, string tag)
     {
         var pattern = $"{delimiter}(.+?){delimiter}";
         var replacement = $"<{tag}>$1</{tag}>";
         return Regex.Replace(markdown, pattern, replacement);
     }
 
-    private static string Parse__(string markdown) => Parse(markdown, "__", "strong");
+    private static string ParseBold(string markdown) => ParseDelimited(markdown, "__", "strong");
 
-    private static string Parse_(string markdown) => Parse(markdown, "_", "em");
+    private static string ParseItalic(string markdown) => ParseDelimited(markdown, "_", "em");
 
     private static string ParseText(string markdown, bool list)
     {
